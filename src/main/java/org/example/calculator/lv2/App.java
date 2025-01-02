@@ -1,6 +1,7 @@
 package org.example.calculator.lv2;
 
 import java.util.InputMismatchException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class App {
@@ -37,6 +38,13 @@ public class App {
         String deleteStr =
             removedElement == -10101010 ? "삭제할 수 없습니다" : "삭제된 데이터: " + removedElement;
         System.out.println(deleteStr);
+        System.out.println("지난 계산 결과 : " + cal.getCalHistory());
+      }
+
+      // 기록을 초기화할 건지 묻는 대화
+      System.out.print("기록을 초기화하시겠습니까? (Y/N)");
+      if (sc.nextLine().equalsIgnoreCase("y")) {
+        cal.setCalHistory(new LinkedList<>());
         System.out.println("지난 계산 결과 : " + cal.getCalHistory());
       }
 

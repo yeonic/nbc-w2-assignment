@@ -6,7 +6,7 @@ import java.util.Queue;
 public class Calculator {
 
   // 가장 오래된 기록을 지우는 매서드를 위해 Queue 활용
-  final private Queue<Integer> calHistory;
+  private Queue<Integer> calHistory;
 
   public Calculator() {
     calHistory = new LinkedList<>();
@@ -44,13 +44,21 @@ public class Calculator {
     return result;
   }
 
-  // getter, setter 구현사항 문의 필요함
+  // getter
+  // collection에 있는 모든 element를 comma-seperated string으로 반환
   public String getCalHistory() {
+    // collection이 비어있을 때에는 "없음" 출력
     return calHistory.isEmpty() ? "없음" :
         calHistory.toString().replace("[", "").replace("]", "");
   }
 
-  // 가장 먼저 저장된 cal history를 삭제한다
+  // setter
+  // calHistory를 새로운 객체로 변경
+  public void setCalHistory(LinkedList<Integer> newHistory) {
+    calHistory = newHistory;
+  }
+
+  // 가장 먼저 저장된 calHistory element를 삭제한다
   // 삭제된 element를 반환한다.
   // 삭제할 수 없을시 -10101010
   public int removeResult() {
