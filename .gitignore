@@ -27,5 +27,7 @@ replay_pid*
 .DS_Store/
 .idea/
 
-# build directory
+# Gradle
+.gradle
 build/
+.gradletasknamecache
