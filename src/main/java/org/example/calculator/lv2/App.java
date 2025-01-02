@@ -13,6 +13,9 @@ public class App {
     while (true) {
       int firstNum, secondNum;
       char operator;
+
+      // 입력을 받는 부분
+      // 타입 불일치시 에러 메시지 출력
       try {
         System.out.print("첫 번째 숫자를 입력하세요: ");
         firstNum = nextInt(sc);
@@ -48,6 +51,7 @@ public class App {
         System.out.println("지난 계산 결과 : " + cal.getCalHistory());
       }
 
+      // 더 계산할 건지 묻는 대화
       System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
       if (sc.nextLine().equals("exit")) {
         break;
