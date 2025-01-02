@@ -46,12 +46,17 @@ public class Calculator {
 
   // getter, setter 구현사항 문의 필요함
   public String getCalHistory() {
-    return calHistory.toString().replace("[", "").replace("]", "");
+    return calHistory.isEmpty() ? "없음" :
+        calHistory.toString().replace("[", "").replace("]", "");
   }
 
   // 가장 먼저 저장된 cal history를 삭제한다
   // 삭제된 element를 반환한다.
+  // 삭제할 수 없을시 -10101010
   public int removeResult() {
+    if (calHistory.isEmpty()) {
+      return -10101010;
+    }
     return calHistory.remove();
   }
 }

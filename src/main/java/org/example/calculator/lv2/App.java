@@ -33,7 +33,10 @@ public class App {
       System.out.println("지난 계산 결과 : " + cal.getCalHistory());
       System.out.println("가장 오래된 기록을 삭제하시겠습니까? (Y/N)");
       if (sc.nextLine().equalsIgnoreCase("y")) {
-        cal.removeResult();
+        int removedElement = cal.removeResult();
+        String deleteStr =
+            removedElement == -10101010 ? "삭제할 수 없습니다" : "삭제된 데이터: " + removedElement;
+        System.out.println(deleteStr);
         System.out.println("지난 계산 결과 : " + cal.getCalHistory());
       }
 
