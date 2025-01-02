@@ -11,6 +11,9 @@ public class App {
     while (true) {
       int firstNum, secondNum;
       char operator;
+
+      // 입력을 받는 부분
+      // 타입 불일치시 에러 메시지 출력
       try {
         System.out.print("첫 번째 숫자를 입력하세요: ");
         firstNum = nextInt(sc);
@@ -23,6 +26,7 @@ public class App {
         return;
       }
 
+      // 계산을 수행하는 부분
       int result = -10101010;
       switch (operator) {
         case '+':
@@ -48,6 +52,7 @@ public class App {
       // -10101010은 에러가 생긴 경우
       System.out.println("결과: " + result);
 
+      // 더 계산할 건지 묻는 대화
       System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
       if (sc.nextLine().equals("exit")) {
         break;
