@@ -48,12 +48,23 @@ public class App {
           System.out.println("삭제된 정수 기록 : " + removedInt);
           System.out.println("삭제된 실수 기록 : " + removedDouble);
 
-          System.out.println("지난 정수 계산 결과 : " + intCal.getCalHistory());
-          System.out.println("지난 실수 계산 결과 : " + doubleCal.getCalHistory());
+          System.out.println("지난 계산 결과(정수) : " + intCal.getCalHistory());
+          System.out.println("지난 계산 결과(실수) : " + doubleCal.getCalHistory());
         }
       } catch (NoSuchElementException e) {
         System.out.println("삭제할 수 없습니다.");
         sc.nextLine();
+      }
+
+      try {
+        System.out.print("N보다 큰 계산 결과들을 보여드립니다. N을 입력하세요 : ");
+        double input = nextFloat(sc);
+        System.out.println("입력하신 수보다 큰 결과(정수) : " + intCal.getHistoryLessThan(input));
+        System.out.println("입력하신 수보다 큰 결과(실수) : " + doubleCal.getHistoryLessThan(input));
+      } catch (InputMismatchException e) {
+        System.out.println("입력 형식이 잘못되었습니다.");
+        sc.nextLine();
+        continue;
       }
 
       System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
