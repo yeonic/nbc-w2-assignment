@@ -17,6 +17,8 @@ public class App {
       double firstNum, secondNum;
       char operator;
 
+      // 입력을 받는 부분
+      // 타입 불일치시 에러 메시지 출력
       try {
         System.out.print("첫 번째 수를 입력하세요: ");
         firstNum = nextFloat(sc);
@@ -30,16 +32,18 @@ public class App {
         continue;
       }
 
-      // Calculate 객체의 calculate 매서드를 활용하도록 변경
+      // Calculate 객체의 calculate 매서드를 활용하여 계산
+      // Calculate class가 Generic class로 변경되어 int, double 모두 지원
       int intResult = intCal.calculate((int) firstNum, (int) secondNum, operator);
       double doubleResult = doubleCal.calculate(firstNum, secondNum, operator);
       System.out.println("정수 계산 결과 : " + intResult);
       System.out.println("실수 계산 결과 : " + doubleResult);
 
-      // 계산 결과를 보여주고, 삭제할 건지 묻는 대화
       System.out.println("지난 정수 계산 결과 : " + intCal.getCalHistory());
       System.out.println("지난 실수 계산 결과 : " + doubleCal.getCalHistory());
 
+      // 삭제할 건지 묻는 대화
+      // 기록이 비어 있는 경우, "삭제할 수 없습니다." 메시지 출력
       try {
         System.out.println("가장 오래된 기록을 삭제하시겠습니까? (Y/N)");
         if (sc.nextLine().equalsIgnoreCase("y")) {
@@ -56,6 +60,8 @@ public class App {
         sc.nextLine();
       }
 
+      // 필터링 된 계산 결과를 보여주는 부분
+      // 필터링 기준이 되는 수 N을 입력 받아 수행.
       try {
         System.out.print("N보다 큰 계산 결과들을 보여드립니다. N을 입력하세요 : ");
         double input = nextFloat(sc);

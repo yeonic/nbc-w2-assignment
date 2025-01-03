@@ -45,7 +45,7 @@ public class Calculator {
   }
 
   // getter
-  // collection에 있는 모든 element를 comma-seperated string으로 반환
+  // collection에 있는 모든 element를 space-seperated string으로 반환
   public String getCalHistory() {
     // collection이 비어있을 때에는 "없음" 출력
     return calHistory.isEmpty() ? "없음" :

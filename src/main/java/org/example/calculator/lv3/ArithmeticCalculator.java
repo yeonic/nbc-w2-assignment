@@ -9,10 +9,12 @@ import org.example.calculator.lv3.typeConverter.TypeConverter;
 
 public class ArithmeticCalculator<T extends Number> {
 
-  // 가장 오래된 기록을 지우는 매서드를 위해 Queue 활용
+  // Converter to be injected
   final private TypeConverter<T> converter;
-  final private Queue<Double> calHistory;
+  private Queue<Double> calHistory;
 
+  // TypeConverter는 inject 받도록 함
+  //  client가 타입을 결정하도록 하여 제어를 역전시킴.
   public ArithmeticCalculator(TypeConverter<T> converter) {
     calHistory = new LinkedList<>();
     this.converter = converter;
@@ -35,10 +37,18 @@ public class ArithmeticCalculator<T extends Number> {
     return converter.convert(temp);
   }
 
+  // getter
+  // collection에 있는 모든 element를 space-seperated string으로 반환
   public String getCalHistory() {
     List<T> result = calHistory.stream().map(converter::convert).toList();
     return result.isEmpty() ? "없음" :
         result.toString().replaceAll("[\\[,\\]]", "");
+  }
+
+  // setter
+  // calHistory를 새로운 객체로 변경
+  public void setCalHistory(LinkedList<Double> newHistory) {
+    calHistory = newHistory;
   }
 
   // 가장 먼저 저장된 cal history를 삭제한다
@@ -51,6 +61,8 @@ public class ArithmeticCalculator<T extends Number> {
     return converter.convert(calHistory.remove());
   }
 
+  // num보다 큰 기록을 문자열로 보여준다
+  // 조건에 맞는 결과가 없는 경우 "없음이 출력된다"
   public String getHistoryLessThan(double num) {
     List<T> result = calHistory.stream().filter(t -> t > num)
         .map(converter::convert).toList();
