@@ -34,13 +34,18 @@ public class App {
 
       // Calculate 객체의 calculate 매서드를 활용하여 계산
       // Calculate class가 Generic class로 변경되어 int, double 모두 지원
-      int intResult = intCal.calculate((int) firstNum, (int) secondNum, operator);
-      double doubleResult = doubleCal.calculate(firstNum, secondNum, operator);
-      System.out.println("정수 계산 결과 : " + intResult);
-      System.out.println("실수 계산 결과 : " + doubleResult);
+      try {
+        int intResult = intCal.calculate((int) firstNum, (int) secondNum, operator);
+        double doubleResult = doubleCal.calculate(firstNum, secondNum, operator);
+        System.out.println("정수 계산 결과 : " + intResult);
+        System.out.println("실수 계산 결과 : " + doubleResult);
 
-      System.out.println("지난 정수 계산 결과 : " + intCal.getCalHistory());
-      System.out.println("지난 실수 계산 결과 : " + doubleCal.getCalHistory());
+        System.out.println("지난 정수 계산 결과 : " + intCal.getCalHistory());
+        System.out.println("지난 실수 계산 결과 : " + doubleCal.getCalHistory());
+      } catch (ArithmeticException e) {
+        System.out.println("잘못된 계산식입니다 : " + e.getMessage());
+        continue;
+      }
 
       // 삭제할 건지 묻는 대화
       // 기록이 비어 있는 경우, "삭제할 수 없습니다." 메시지 출력
